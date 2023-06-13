@@ -1,7 +1,7 @@
 namespace com.novalog;
 
 using {managed} from '@sap/cds/common';
-
+//
 entity Status : managed {
     key id          : UUID;
         description : String(100)
