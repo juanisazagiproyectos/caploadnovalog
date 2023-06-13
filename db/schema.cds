@@ -3,27 +3,34 @@ namespace com.novalog;
 using {managed} from '@sap/cds/common';
 
 entity Status : managed {
-    key id          : UUID @(Core.Computed : True);
-    key code        : String(1);
+    key id          : UUID;
         description : String(100)
 };
+
+entity TipoMod_Actividad : managed {
+    key id          : Integer;
+        tipoMod : String(50);
+        actividades: String(200)
+};
+
 
 @cds.persistence.exists
 @cds.persistence.calcview
 entity Parameter : managed {
-    key id        : UUID @(Core.Computed : True);
+    key id        : Integer;
         Parameter : String(20);
         Value     : String(500)
 };
 
 entity Mode : managed {
-    key id          : UUID @(Core.Computed : True);
-        description : String(100)
+    key id          : UUID;
+        tipoMod : String(100);
+        actividades : String(200)
 
 };
 
 entity Template : managed {
-    key id              : UUID @(Core.Computed : True);
+    key id              : Integer;
         template        : String(100);
         fecha_cargue    : Date;
         pedido          : String(1);
@@ -39,9 +46,10 @@ entity Template : managed {
 };
 
 entity Load : managed {
-    key id              : UUID @(Core.Computed : True);
+    key id              : Integer;
         fecha_cargue    : Date;
         pedido          : String(20);
+        tipoMod         : String(50);
         actividad       : String(200);
         h7a9            : Integer;
         h9_01a12        : Integer;
@@ -57,3 +65,8 @@ entity Load : managed {
         fecha_envio     : Date;
         hora_envio      : Time
 }
+entity Actividad : managed {
+    key id          : Integer;
+        actividad : String(50);
+        des_actividad: String(200)
+};
